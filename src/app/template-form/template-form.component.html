@@ -1,0 +1,48 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)"> <!-- f = a variavel local -->
+  
+   <div class="form-group">
+    <label for="sigla">Sigla</label>
+      <input type="text" class="form-control" name="sigla"
+      id="sigla" placeholder="Sigla" [(ngModel)]="usuario.sigla"
+      required #sigla="ngModel">
+        <div *ngIf="!sigla.valid && sigla.touched"
+        class="alert alert-danger" role="alert">
+          A Sigla é obrigatória.
+        </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome"
+      id="nome" placeholder="Nome" [(ngModel)]="usuario.nome"
+      required #nome="ngModel">
+        <div *ngIf="!nome.valid && nome.touched"
+        class="alert alert-danger" role="alert">
+          O Nome é obrigatório.
+        </div>
+  </div>
+
+  <div class="form-group">
+    <label for="descricao">Descrição</label>
+      <input type="text" class="form-control" name="descricao"
+      id="descricao" placeholder="Descrição do modelo a ser cadastrado." [(ngModel)]="usuario.descricao"
+      required #descricao="ngModel">
+        <div *ngIf="!descricao.valid && descricao.touched"
+        class="alert alert-danger" role="alert">
+          A descrição do modelo é obrigatória.
+        </div>
+  </div>
+
+  <!--div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" name="email"
+     id="email" placeholder="nome@email.com" [(ngModel)]="usuario.email"
+     required email>
+  </div-->
+
+  <button type="submit" class="btn btn-primary"
+  [disabled]="!f.valid">Enviar</button>
+  <button type="submit" class="btn btn-primary"
+  [disabled]="!f.valid">Cancelar</button>
+
+</form>
